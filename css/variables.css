@@ -1,7 +1,7 @@
 :root {
   --color-bg: #e1d4c9;
   --color-text: #403f3d;
-  --color-accent: #665f55;
+  --color-accent: #b0907a;
   --color-border: #c1b6ad;
   --color-card: #e1d4c9;
   --color-placeholder: #c1b6ad;
@@ -20,7 +20,7 @@
 [data-theme="dark"] {
   --color-bg: #403f3d;
   --color-text: #e1d4c9;
-  --color-accent: #c1b6ad;
+  --color-accent: #b0907a;
   --color-border: #665f55;
   --color-card: #403f3d;
   --color-placeholder: #665f55;

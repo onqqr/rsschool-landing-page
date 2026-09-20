@@ -70,12 +70,18 @@ p {
   font-weight: 600;
 }
 
+.accent {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 64px;
   padding: 20px 78px;
+  width: fit-content;
   border-radius: var(--radius);
   background-color: var(--color-text);
   color: var(--color-bg);
