@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee House</title>
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme");
+          if (theme === "dark" || theme === "light") {
+            document.documentElement.setAttribute("data-theme", theme);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script src="js/theme.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="header__logo" href="index.html">Resource</a>
+        <nav class="header__nav" aria-label="Primary">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="index.html#favorites"
+                >Favorite coffee</a
+              >
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="index.html#about">About</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="index.html#mobile-app"
+                >Mobile app</a
+              >
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="menu.html">Menu</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-pressed="false"
+            aria-label="Switch to dark theme"
+          ></button>
+          <button class="burger" type="button" aria-label="Open menu">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="container hero__inner">
+          <h1 class="hero__title" id="hero-title">
+            Enjoy premium coffee at our charming cafe
+          </h1>
+          <p class="hero__text">
+            With its inviting atmosphere and delicious coffee options, the
+            Coffee House Resource is the perfect spot to spend a relaxing
+            afternoon.
+          </p>
+          <a class="button" href="menu.html">Menu</a>
+        </div>
+      </section>
+
+      <section
+        class="favorites"
+        id="favorites"
+        aria-labelledby="favorites-title"
+      >
+        <div class="container">
+          <h2 class="section-title" id="favorites-title">Favorite coffee</h2>
+          <div class="slider">
+            <button
+              class="slider__btn slider__btn--prev"
+              type="button"
+              aria-label="Previous slide"
+            ></button>
+            <div class="slider__viewport">
+              <article class="slider__item">
+                <div
+                  class="slider__image"
+                  role="img"
+                  aria-label="Slide image placeholder"
+                ></div>
+                <h3 class="slider__name">Irish coffee</h3>
+                <p class="slider__description">
+                  Fragrant black coffee with Jameson Irish whiskey and whipped
+                  cream
+                </p>
+                <p class="slider__price">$7.00</p>
+              </article>
+              <article class="slider__item">
+                <div
+                  class="slider__image"
+                  role="img"
+                  aria-label="Slide image placeholder"
+                ></div>
+                <h3 class="slider__name">Kahlua coffee</h3>
+                <p class="slider__description">
+                  Classic coffee with milk and Kahlua liqueur under a layer of
+                  foam
+                </p>
+                <p class="slider__price">$7.00</p>
+              </article>
+              <article class="slider__item">
+                <div
+                  class="slider__image"
+                  role="img"
+                  aria-label="Slide image placeholder"
+                ></div>
+                <h3 class="slider__name">Honey raf</h3>
+                <p class="slider__description">
+                  Espresso with frothed milk and honey, creamy vanilla finish
+                </p>
+                <p class="slider__price">$5.50</p>
+              </article>
+            </div>
+            <button
+              class="slider__btn slider__btn--next"
+              type="button"
+              aria-label="Next slide"
+            ></button>
+            <div class="slider__dots" aria-hidden="true">
+              <span class="slider__dot slider__dot--active"></span>
+              <span class="slider__dot"></span>
+              <span class="slider__dot"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <h2 class="section-title" id="about-title">
+            Resource is an international chain of coffee shops
+          </h2>
+          <div class="about__gallery">
+            <div
+              class="about__image"
+              role="img"
+              aria-label="About image placeholder"
+            ></div>
+            <div
+              class="about__image"
+              role="img"
+              aria-label="About image placeholder"
+            ></div>
+            <div
+              class="about__image"
+              role="img"
+              aria-label="About image placeholder"
+            ></div>
+            <div
+              class="about__image"
+              role="img"
+              aria-label="About image placeholder"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="mobile-app"
+        id="mobile-app"
+        aria-labelledby="mobile-app-title"
+      >
+        <div class="container mobile-app__inner">
+          <div class="mobile-app__content">
+            <h2 class="section-title" id="mobile-app-title">
+              Download our apps to receive exclusive offers
+            </h2>
+            <div class="mobile-app__links">
+              <a class="store-link" href="#" aria-label="App Store"
+                >App Store</a
+              >
+              <a class="store-link" href="#" aria-label="Google Play"
+                >Google Play</a
+              >
+            </div>
+          </div>
+          <div
+            class="mobile-app__image"
+            role="img"
+            aria-label="Mobile app preview placeholder"
+          ></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__contacts">
+          <h2 class="footer__title">
+            Sip, savor, smile. It is all in the cup.
+          </h2>
+          <ul class="footer__list">
+            <li>
+              <a class="footer__link" href="tel:+1234567890">+1-234-567-890</a>
+            </li>
+            <li>
+              <a
+                class="footer__link"
+                href="https://maps.google.com/?q=837+W.+Marshall+Lane+Marshalltown+IA+50158"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                837 W. Marshall Lane Marshalltown, IA 50158, USA
+              </a>
+            </li>
+          </ul>
+        </div>
+        <ul class="footer__socials">
+          <li>
+            <a
+              class="footer__social"
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Twitter</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer__social"
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a
+              class="footer__social"
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Facebook</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
