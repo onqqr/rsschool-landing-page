@@ -16,9 +16,7 @@ function getStoredTheme() {
 function saveTheme(theme) {
   try {
     localStorage.setItem(STORAGE_KEY, theme);
-  } catch {
-    // private mode / quota
-  }
+  } catch {}
 }
 
 function syncToggle(theme) {

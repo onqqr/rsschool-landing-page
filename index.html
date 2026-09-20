@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee House</title>
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="assets/icons/logo-light.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/fonts/font.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
@@ -21,6 +21,9 @@
       })();
     </script>
     <script src="js/theme.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/hero.js" defer></script>
+    <script src="js/slider.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -105,6 +108,21 @@
       <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="container">
           <div class="hero__inner">
+            <img
+              class="hero__media"
+              src="assets/images/img-hero.jpg"
+              alt=""
+            />
+            <video
+              class="hero__media hero__media--video"
+              data-hero-video
+              muted
+              loop
+              playsinline
+              preload="auto"
+            >
+              <source src="assets/header-video.mp4" type="video/mp4" />
+            </video>
             <h1 class="hero__title" id="hero-title">
               <span class="hero__accent">Enjoy </span>premium coffee at our
               charming cafe
@@ -115,7 +133,18 @@
               and those seeking a warm and inviting space to enjoy their
               favorite beverage.
             </p>
-            <a class="button hero__button" href="menu.html">Menu</a>
+            <a class="button hero__button" href="menu.html">
+              <span class="hero__button-inner">
+                Menu
+                <img
+                  class="hero__button-icon"
+                  src="assets/icons/coffee-cup.svg"
+                  alt=""
+                  width="20"
+                  height="20"
+                />
+              </span>
+            </a>
           </div>
         </div>
       </section>
@@ -129,51 +158,39 @@
           <h2 class="section-title" id="favorites-title">
             Choose your <span class="accent">favorite</span> coffee
           </h2>
-          <div class="slider">
+          <div class="slider" data-slider>
             <div class="slider__media">
               <button
                 class="slider__btn slider__btn--prev"
                 type="button"
+                data-slider-prev
                 aria-label="Previous slide"
               >
                 <img
                   src="assets/icons/arrow-left.svg"
-                  alt="arrow left"
+                  alt=""
                   width="13"
                   height="12"
                 />
               </button>
-              <img
-                class="slider__image"
-                src="assets/icons/coffee-slider-1.svg"
-                alt="S'mores Frappuccino"
-              />
+              <div class="slider__viewport" data-slider-viewport>
+                <div class="slider__track" data-slider-track></div>
+              </div>
               <button
                 class="slider__btn slider__btn--next"
                 type="button"
+                data-slider-next
                 aria-label="Next slide"
               >
                 <img
                   src="assets/icons/arrow-right.svg"
-                  alt="arrow right"
+                  alt=""
                   width="13"
                   height="12"
                 />
               </button>
             </div>
-            <article class="slider__item">
-              <h3 class="slider__name">S'mores Frappuccino</h3>
-              <p class="slider__description">
-                This new drink takes an espresso and mixes it with brown sugar
-                and cinnamon before being topped with oat milk.
-              </p>
-              <p class="slider__price">$5.50</p>
-            </article>
-            <div class="slider__dots" aria-hidden="true">
-              <span class="slider__dot slider__dot--active"></span>
-              <span class="slider__dot"></span>
-              <span class="slider__dot"></span>
-            </div>
+            <div class="slider__dots" data-slider-dots></div>
           </div>
         </div>
       </section>
@@ -186,26 +203,34 @@
             friends, or get some work done.
           </h2>
           <div class="about__gallery">
-            <img
-              class="about__image"
-              src="assets/images/about-1.jpg"
-              alt="Woman enjoying coffee at a cafe"
-            />
-            <img
-              class="about__image"
-              src="assets/images/about-3.jpg"
-              alt="Man working on a laptop with coffee"
-            />
-            <img
-              class="about__image"
-              src="assets/images/about-2.jpg"
-              alt="Coffee cup on a table with lights"
-            />
-            <img
-              class="about__image"
-              src="assets/images/about-4.jpg"
-              alt="Couple drinking coffee together"
-            />
+            <div class="about__frame">
+              <img
+                class="about__image"
+                src="assets/images/about-1.jpg"
+                alt="Woman enjoying coffee at a cafe"
+              />
+            </div>
+            <div class="about__frame">
+              <img
+                class="about__image"
+                src="assets/images/about-3.jpg"
+                alt="Man working on a laptop with coffee"
+              />
+            </div>
+            <div class="about__frame">
+              <img
+                class="about__image"
+                src="assets/images/about-2.jpg"
+                alt="Coffee cup on a table with lights"
+              />
+            </div>
+            <div class="about__frame">
+              <img
+                class="about__image"
+                src="assets/images/about-4.jpg"
+                alt="Couple drinking coffee together"
+              />
+            </div>
           </div>
         </div>
       </section>

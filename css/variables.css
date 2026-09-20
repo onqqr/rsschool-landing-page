@@ -6,6 +6,9 @@
   --color-card: #e1d4c9;
   --color-placeholder: #c1b6ad;
 
+  --color-hover-bg: #665f55;
+  --color-hover-on: #e1d4c9;
+
   --font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   --font-size-base: 16px;
   --line-height-base: 1.5;
@@ -15,6 +18,7 @@
   --header-height: 100px;
   --radius: 40px;
   --transition: 0.3s ease;
+  --transition-slow: 0.7s ease;
 }
 
 [data-theme="dark"] {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu Coffee House</title>
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="assets/icons/logo-light.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/fonts/font.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
@@ -21,6 +21,8 @@
       })();
     </script>
     <script src="js/theme.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/menu.js" defer></script>
   </head>
   <body>
     <header class="header">
@@ -76,7 +78,7 @@
               <img src="assets/icons/Moon.svg" alt="" width="18" height="18" />
             </span>
           </button>
-          <a class="header__menu" href="menu.html">
+          <a class="header__menu header__menu--current" href="menu.html">
             Menu
             <img
               class="header__menu-icon"
@@ -96,10 +98,11 @@
     </header>
 
     <main>
-      <section class="menu" id="menu" aria-labelledby="menu-title">
+      <section class="menu" id="menu" data-menu aria-labelledby="menu-title">
         <div class="container">
           <h1 class="section-title" id="menu-title">
-            Behind each of our cups hides an amazing surprise
+            Behind each of our cups hides an
+            <span class="accent">amazing surprise</span>
           </h1>
 
           <div class="menu__tabs" role="tablist" aria-label="Menu categories">
@@ -108,7 +111,9 @@
               type="button"
               role="tab"
               aria-selected="true"
+              data-category="coffee"
             >
+              <span class="menu__tab-icon" aria-hidden="true">☕</span>
               Coffee
             </button>
             <button
@@ -116,7 +121,9 @@
               type="button"
               role="tab"
               aria-selected="false"
+              data-category="tea"
             >
+              <span class="menu__tab-icon" aria-hidden="true">🫖</span>
               Tea
             </button>
             <button
@@ -124,127 +131,20 @@
               type="button"
               role="tab"
               aria-selected="false"
+              data-category="dessert"
             >
+              <span class="menu__tab-icon" aria-hidden="true">🍰</span>
               Dessert
             </button>
           </div>
 
-          <ul class="menu__grid">
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Irish coffee"
-                ></div>
-                <h2 class="menu-card__title">Irish coffee</h2>
-                <p class="menu-card__description">
-                  Fragrant black coffee with Jameson Irish whiskey and whipped
-                  cream
-                </p>
-                <p class="menu-card__price">$7.00</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Kahlua coffee"
-                ></div>
-                <h2 class="menu-card__title">Kahlua coffee</h2>
-                <p class="menu-card__description">
-                  Classic coffee with milk and Kahlua liqueur under a layer of
-                  foam
-                </p>
-                <p class="menu-card__price">$7.00</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Honey raf"
-                ></div>
-                <h2 class="menu-card__title">Honey raf</h2>
-                <p class="menu-card__description">
-                  Espresso, frothed milk and honey
-                </p>
-                <p class="menu-card__price">$5.50</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Ice cappuccino"
-                ></div>
-                <h2 class="menu-card__title">Ice cappuccino</h2>
-                <p class="menu-card__description">
-                  Cappuccino with soft thick foam in summer version with ice
-                </p>
-                <p class="menu-card__price">$4.00</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Espresso"
-                ></div>
-                <h2 class="menu-card__title">Espresso</h2>
-                <p class="menu-card__description">Classic black coffee</p>
-                <p class="menu-card__price">$4.50</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Latte"
-                ></div>
-                <h2 class="menu-card__title">Latte</h2>
-                <p class="menu-card__description">
-                  Espresso coffee with the addition of steamed milk
-                </p>
-                <p class="menu-card__price">$5.50</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Latte macchiato"
-                ></div>
-                <h2 class="menu-card__title">Latte macchiato</h2>
-                <p class="menu-card__description">Espresso with frothed milk</p>
-                <p class="menu-card__price">$5.50</p>
-              </article>
-            </li>
-            <li>
-              <article class="menu-card">
-                <div
-                  class="menu-card__image"
-                  role="img"
-                  aria-label="Coffee with cinnamon"
-                ></div>
-                <h2 class="menu-card__title">Coffee with cinnamon</h2>
-                <p class="menu-card__description">
-                  Espresso with frothed milk and cinnamon
-                </p>
-                <p class="menu-card__price">$6.00</p>
-              </article>
-            </li>
-          </ul>
+          <ul class="menu__grid" data-menu-grid></ul>
 
           <button
             class="menu__more"
             type="button"
+            data-menu-more
+            hidden
             aria-label="Show more products"
           ></button>
         </div>
