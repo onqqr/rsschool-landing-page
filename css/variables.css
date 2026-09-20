@@ -1,0 +1,27 @@
+:root {
+  --color-bg: #e1d4c9;
+  --color-text: #403f3d;
+  --color-accent: #665f55;
+  --color-border: #c1b6ad;
+  --color-card: #e1d4c9;
+  --color-placeholder: #c1b6ad;
+
+  --font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
+  --container-width: 1440px;
+  --container-padding: 40px;
+  --header-height: 100px;
+  --radius: 40px;
+  --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --color-bg: #403f3d;
+  --color-text: #e1d4c9;
+  --color-accent: #c1b6ad;
+  --color-border: #665f55;
+  --color-card: #403f3d;
+  --color-placeholder: #665f55;
+}
