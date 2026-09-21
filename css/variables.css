@@ -30,6 +30,7 @@
   --color-border: #665f55;
   --color-card: #403f3d;
   --color-placeholder: #665f55;
+  --color-hover-bg: #403f3d;
 }
 
 @media (max-width: 768px) {

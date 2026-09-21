@@ -229,6 +229,15 @@
   filter: invert(1);
 }
 
+[data-theme="dark"] .footer__social:hover {
+  background-color: #292826;
+  border-color: #292826;
+}
+
+[data-theme="dark"] .footer__social:hover img {
+  filter: none;
+}
+
 .footer__contacts-title {
   margin-bottom: 40px;
   font-size: 24px;
