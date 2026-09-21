@@ -156,6 +156,7 @@ class MenuCatalog {
     this.root = root;
     this.data = data;
     this.grid = root.querySelector('[data-menu-grid]');
+    this.panel = root.querySelector('[role="tabpanel"]');
     this.tabs = [...root.querySelectorAll('[data-category]')];
     this.moreButton = root.querySelector('[data-menu-more]');
     this.media = window.matchMedia('(max-width: 768px)');
@@ -247,6 +248,11 @@ class MenuCatalog {
       const selected = tab.dataset.category === this.#category;
       tab.classList.toggle('menu__tab--active', selected);
       tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+
+      if (selected && this.panel && tab.id) {
+        this.panel.setAttribute('aria-labelledby', tab.id);
+      }
     });
 
     if (this.moreButton) {
