@@ -16,6 +16,8 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: var(--color-text);
   background-color: var(--color-bg);
   transition: color var(--transition), background-color var(--transition);
@@ -65,7 +67,7 @@ p {
 }
 
 .section-title {
-  font-size: 60px;
+  font-size: 3.75rem;
   line-height: 1.25;
   font-weight: 600;
 }
@@ -90,11 +92,8 @@ p {
 }
 
 @media (max-width: 768px) {
-  :root {
-    --container-padding: 20px;
-  }
-
   .section-title {
-    font-size: 32px;
+    font-size: var(--section-title-size);
+    letter-spacing: 0;
   }
 }
