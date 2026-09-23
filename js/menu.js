@@ -1,160 +1,181 @@
-const MENU = new Map([
-  [
-    'coffee',
-    [
-      {
-        name: 'Irish coffee',
-        description:
-          'Fragrant black coffee with Jameson Irish whiskey and whipped milk',
-        price: '7.00',
-        image: 'assets/images/coffee/coffee-1.jpg',
-      },
-      {
-        name: 'Kahlua coffee',
-        description:
-          'Classic coffee with milk and Kahlua liqueur under a cap of frothed milk',
-        price: '7.00',
-        image: 'assets/images/coffee/coffee-2.jpg',
-      },
-      {
-        name: 'Honey raf',
-        description: 'Espresso with frothed milk, cream and aromatic honey',
-        price: '5.50',
-        image: 'assets/images/coffee/coffee-3.jpg',
-      },
-      {
-        name: 'Ice cappuccino',
-        description:
-          'Cappuccino with soft thick foam in summer version with ice',
-        price: '5.00',
-        image: 'assets/images/coffee/coffee-4.jpg',
-      },
-      {
-        name: 'Espresso',
-        description: 'Classic black coffee',
-        price: '4.50',
-        image: 'assets/images/coffee/coffee-5.jpg',
-      },
-      {
-        name: 'Latte',
-        description:
-          'Espresso coffee with the addition of steamed milk and dense milk foam',
-        price: '5.50',
-        image: 'assets/images/coffee/coffee-6.jpg',
-      },
-      {
-        name: 'Latte macchiato',
-        description: 'Espresso with frothed milk and chocolate',
-        price: '5.50',
-        image: 'assets/images/coffee/coffee-7.jpg',
-      },
-      {
-        name: 'Coffee with cognac',
-        description: 'Fragrant black coffee with cognac and whipped cream',
-        price: '6.50',
-        image: 'assets/images/coffee/coffee-8.jpg',
-      },
-    ],
-  ],
-  [
-    'tea',
-    [
-      {
-        name: 'Moroccan',
-        description:
-          'Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint',
-        price: '4.50',
-        image: 'assets/images/tea/tea-1.png',
-      },
-      {
-        name: 'Ginger',
-        description: 'Original black tea with fresh ginger, lemon and honey',
-        price: '5.00',
-        image: 'assets/images/tea/tea-2.png',
-      },
-      {
-        name: 'Cranberry',
-        description: 'Invigorating black tea with cranberry and honey',
-        price: '5.00',
-        image: 'assets/images/tea/tea-3.png',
-      },
-      {
-        name: 'Sea buckthorn',
-        description:
-          'Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon',
-        price: '5.50',
-        image: 'assets/images/tea/tea-4.png',
-      },
-    ],
-  ],
-  [
-    'dessert',
-    [
-      {
-        name: 'Marble cheesecake',
-        description:
-          'Philadelphia cheese with lemon zest on a light sponge cake and red currant jam',
-        price: '3.50',
-        image: 'assets/images/dessert/dessert-1.png',
-      },
-      {
-        name: 'Red velvet',
-        description: 'Layer cake with cream cheese frosting',
-        price: '4.00',
-        image: 'assets/images/dessert/dessert-2.png',
-      },
-      {
-        name: 'Cheesecakes',
-        description:
-          'Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar',
-        price: '4.50',
-        image: 'assets/images/dessert/dessert-3.png',
-      },
-      {
-        name: 'Creme brulee',
-        description:
-          'Delicate creamy dessert in a caramel basket with wild berries',
-        price: '4.00',
-        image: 'assets/images/dessert/dessert-4.png',
-      },
-      {
-        name: 'Pancakes',
-        description:
-          'Tender pancakes with strawberry jam and fresh strawberries',
-        price: '4.50',
-        image: 'assets/images/dessert/dessert-5.png',
-      },
-      {
-        name: 'Honey cake',
-        description: 'Classic honey cake with delicate custard',
-        price: '4.50',
-        image: 'assets/images/dessert/dessert-6.png',
-      },
-      {
-        name: 'Chocolate cake',
-        description:
-          'Cake with hot chocolate filling and nuts with dried apricots',
-        price: '5.50',
-        image: 'assets/images/dessert/dessert-7.png',
-      },
-      {
-        name: 'Black forest',
-        description:
-          'A combination of thin sponge cake with cherry jam and light chocolate mousse',
-        price: '6.50',
-        image: 'assets/images/dessert/dessert-8.png',
-      },
-    ],
-  ],
-]);
+const IMAGE_EXT = {
+  coffee: 'jpg',
+  tea: 'png',
+  dessert: 'png',
+};
+
+function attachImages(products) {
+  const counters = { coffee: 0, tea: 0, dessert: 0 };
+
+  return products.map((product) => {
+    const category = product.category;
+    counters[category] += 1;
+    const index = counters[category];
+    const ext = IMAGE_EXT[category] ?? 'png';
+
+    return {
+      ...product,
+      image: `assets/images/${category}/${category}-${index}.${ext}`,
+    };
+  });
+}
+
+function groupByCategory(products) {
+  const map = new Map([
+    ['coffee', []],
+    ['tea', []],
+    ['dessert', []],
+  ]);
+
+  products.forEach((product) => {
+    map.get(product.category)?.push(product);
+  });
+
+  return map;
+}
+
+class ProductModal {
+  #product = null;
+  #size = 's';
+  #additives = new Set();
+
+  constructor(root) {
+    this.root = root;
+    this.dialog = root.querySelector('[data-modal-dialog]');
+    this.image = root.querySelector('[data-modal-image]');
+    this.title = root.querySelector('[data-modal-title]');
+    this.description = root.querySelector('[data-modal-description]');
+    this.sizes = root.querySelector('[data-modal-sizes]');
+    this.additives = root.querySelector('[data-modal-additives]');
+    this.price = root.querySelector('[data-modal-price]');
+    this.#bind();
+  }
+
+  #bind() {
+    this.root.querySelectorAll('[data-modal-close]').forEach((node) => {
+      node.addEventListener('click', () => this.close());
+    });
+
+    this.root
+      .querySelector('[data-modal-backdrop]')
+      ?.addEventListener('click', () => this.close());
+
+    this.dialog?.addEventListener('click', (event) => event.stopPropagation());
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && this.isOpen) {
+        this.close();
+      }
+    });
+  }
+
+  get isOpen() {
+    return !this.root.hidden;
+  }
+
+  open(product) {
+    this.#product = product;
+    this.#size = 's';
+    this.#additives = new Set();
+    this.#render();
+    this.root.hidden = false;
+    document.body.classList.add('is-modal-open');
+    this.root.querySelector('[data-modal-close]')?.focus();
+  }
+
+  close() {
+    this.root.hidden = true;
+    document.body.classList.remove('is-modal-open');
+    this.#product = null;
+  }
+
+  #render() {
+    if (!this.#product) {
+      return;
+    }
+
+    const product = this.#product;
+
+    this.image.src = product.image;
+    this.image.alt = product.name;
+    this.title.textContent = product.name;
+    this.description.textContent = product.description;
+
+    this.sizes.replaceChildren(
+      ...Object.entries(product.sizes).map(([key, value]) =>
+        this.#choiceButton({
+          mark: key.toUpperCase(),
+          label: value.size,
+          active: this.#size === key,
+          onClick: () => {
+            this.#size = key;
+            this.#render();
+          },
+        }),
+      ),
+    );
+
+    this.additives.replaceChildren(
+      ...product.additives.map((additive, index) =>
+        this.#choiceButton({
+          mark: String(index + 1),
+          label: additive.name,
+          active: this.#additives.has(index),
+          onClick: () => {
+            if (this.#additives.has(index)) {
+              this.#additives.delete(index);
+            } else {
+              this.#additives.add(index);
+            }
+            this.#render();
+          },
+        }),
+      ),
+    );
+
+    this.price.textContent = `$${this.#total()}`;
+  }
+
+  #choiceButton({ mark, label, active, onClick }) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `modal__choice${active ? ' modal__choice--active' : ''}`;
+    button.setAttribute('aria-pressed', String(active));
+
+    const badge = document.createElement('span');
+    badge.className = 'modal__choice-badge';
+    badge.textContent = mark;
+
+    const text = document.createElement('span');
+    text.className = 'modal__choice-text';
+    text.textContent = label;
+
+    button.append(badge, text);
+    button.addEventListener('click', onClick);
+
+    return button;
+  }
+
+  #total() {
+    const product = this.#product;
+    const base = Number.parseFloat(product.price);
+    const sizeExtra = Number.parseFloat(product.sizes[this.#size]['add-price']);
+    const additivesExtra = [...this.#additives].reduce((sum, index) => {
+      return sum + Number.parseFloat(product.additives[index]['add-price']);
+    }, 0);
+
+    return (base + sizeExtra + additivesExtra).toFixed(2);
+  }
+}
 
 class MenuCatalog {
   #category = 'coffee';
   #expanded = false;
 
-  constructor({ root, data }) {
+  constructor({ root, data, modal }) {
     this.root = root;
     this.data = data;
+    this.modal = modal;
     this.grid = root.querySelector('[data-menu-grid]');
     this.panel = root.querySelector('[role="tabpanel"]');
     this.tabs = [...root.querySelectorAll('[data-category]')];
@@ -208,6 +229,18 @@ class MenuCatalog {
     const li = document.createElement('li');
     const article = document.createElement('article');
     article.className = 'menu-card';
+    article.tabIndex = 0;
+    article.setAttribute('role', 'button');
+    article.setAttribute('aria-label', `Open ${item.name}`);
+
+    const open = () => this.modal.open(item);
+    article.addEventListener('click', open);
+    article.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
+    });
 
     const media = document.createElement('div');
     media.className = 'menu-card__media';
@@ -263,8 +296,20 @@ class MenuCatalog {
   }
 }
 
-const menuRoot = document.querySelector('[data-menu]');
+async function initMenu() {
+  const menuRoot = document.querySelector('[data-menu]');
+  const modalRoot = document.querySelector('[data-modal]');
 
-if (menuRoot) {
-  new MenuCatalog({ root: menuRoot, data: MENU });
+  if (!menuRoot || !modalRoot) {
+    return;
+  }
+
+  const response = await fetch('products.json');
+  const products = attachImages(await response.json());
+  const data = groupByCategory(products);
+  const modal = new ProductModal(modalRoot);
+
+  new MenuCatalog({ root: menuRoot, data, modal });
 }
+
+initMenu();

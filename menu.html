@@ -304,5 +304,57 @@
         </div>
       </div>
     </footer>
+
+    <div class="modal" hidden data-modal>
+      <div class="modal__backdrop" data-modal-backdrop></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        data-modal-dialog
+      >
+        <img class="modal__image" alt="" width="310" height="310" data-modal-image>
+        <div class="modal__content">
+          <div class="modal__header">
+            <h2 class="modal__title" id="modal-title" data-modal-title></h2>
+            <p class="modal__description" data-modal-description></p>
+          </div>
+
+          <div class="modal__group">
+            <h3 class="modal__label">Size</h3>
+            <div class="modal__choices" data-modal-sizes></div>
+          </div>
+
+          <div class="modal__group">
+            <h3 class="modal__label">Additives</h3>
+            <div class="modal__choices" data-modal-additives></div>
+          </div>
+
+          <div class="modal__total">
+            <span class="modal__total-label">Total:</span>
+            <span class="modal__total-price" data-modal-price></span>
+          </div>
+
+          <div class="modal__note">
+            <img
+              class="modal__note-icon"
+              src="assets/icons/info.svg"
+              alt=""
+              width="16"
+              height="16">
+            <p class="modal__note-text">
+              The cost is not final. Download our mobile app to see the final
+              price and place your order. Earn loyalty points and enjoy your
+              favorite coffee with up to 20% discount.
+            </p>
+          </div>
+
+          <button class="modal__close" type="button" data-modal-close>
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
