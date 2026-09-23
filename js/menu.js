@@ -296,16 +296,15 @@ class MenuCatalog {
   }
 }
 
-async function initMenu() {
+function initMenu() {
   const menuRoot = document.querySelector('[data-menu]');
   const modalRoot = document.querySelector('[data-modal]');
 
-  if (!menuRoot || !modalRoot) {
+  if (!menuRoot || !modalRoot || typeof PRODUCTS === 'undefined') {
     return;
   }
 
-  const response = await fetch('products.json');
-  const products = attachImages(await response.json());
+  const products = attachImages(PRODUCTS);
   const data = groupByCategory(products);
   const modal = new ProductModal(modalRoot);
 

@@ -169,10 +169,20 @@
   width: 44px;
   height: 44px;
   max-width: none;
+  opacity: 1;
+  transition: opacity var(--transition);
 }
 
-.burger__icon[hidden] {
-  display: none;
+.burger__icon--close {
+  opacity: 0;
+}
+
+.burger.is-open .burger__icon--open {
+  opacity: 0;
+}
+
+.burger.is-open .burger__icon--close {
+  opacity: 1;
 }
 
 [data-theme="dark"] .burger__icon {

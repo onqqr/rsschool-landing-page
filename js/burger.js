@@ -5,8 +5,6 @@ class BurgerMenu {
     this.button = button;
     this.panel = panel;
     this.media = window.matchMedia(mediaQuery);
-    this.openIcon = button.querySelector('[data-burger-open]');
-    this.closeIcon = button.querySelector('[data-burger-close]');
     this.links = [...panel.querySelectorAll('a')];
 
     this.#bind();
@@ -52,9 +50,9 @@ class BurgerMenu {
     this.panel.setAttribute('aria-hidden', 'false');
     this.panel.removeAttribute('inert');
     document.body.classList.add('is-menu-open');
+    this.button.classList.add('is-open');
     this.button.setAttribute('aria-expanded', 'true');
     this.button.setAttribute('aria-label', 'Close menu');
-    this.#syncIcons();
   }
 
   close({ silent = false } = {}) {
@@ -63,22 +61,12 @@ class BurgerMenu {
     this.panel.setAttribute('aria-hidden', 'true');
     this.panel.setAttribute('inert', '');
     document.body.classList.remove('is-menu-open');
+    this.button.classList.remove('is-open');
     this.button.setAttribute('aria-expanded', 'false');
     this.button.setAttribute('aria-label', 'Open menu');
-    this.#syncIcons();
 
     if (!silent) {
       this.button.focus();
-    }
-  }
-
-  #syncIcons() {
-    if (this.openIcon) {
-      this.openIcon.hidden = this.#isOpen;
-    }
-
-    if (this.closeIcon) {
-      this.closeIcon.hidden = !this.#isOpen;
     }
   }
 }
