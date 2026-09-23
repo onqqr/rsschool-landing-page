@@ -157,19 +157,105 @@
 
 .burger {
   display: none;
+  position: relative;
   width: 44px;
   height: 44px;
   padding: 0;
 }
 
-.burger img {
+.burger__icon {
+  position: absolute;
+  inset: 0;
   width: 44px;
   height: 44px;
   max-width: none;
 }
 
-[data-theme="dark"] .burger img {
+.burger__icon[hidden] {
+  display: none;
+}
+
+[data-theme="dark"] .burger__icon {
   filter: var(--icon-filter-on);
+}
+
+.mobile-nav {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-1rem);
+  transition: opacity var(--transition), visibility var(--transition),
+    transform var(--transition), background-color var(--transition);
+}
+
+.mobile-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 688px;
+  gap: 60px;
+}
+
+.mobile-nav__list > li:last-child {
+  margin-top: 40px;
+}
+
+.mobile-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 40px;
+  font-family: var(--font-family);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.mobile-nav__menu-icon {
+  width: 40px;
+  height: 40px;
+  max-width: none;
+}
+
+[data-theme="dark"] .mobile-nav__menu-icon {
+  filter: var(--icon-filter-on);
+}
+
+.mobile-nav__link--current {
+  box-shadow: inset 0 -2px 0 currentColor;
+  padding-bottom: 6px;
+}
+
+body.is-menu-open {
+  overflow: hidden;
 }
 
 .footer {
@@ -264,7 +350,7 @@
   box-shadow: inset 0 -2px 0 currentColor;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .header__nav,
   .header__menu {
     display: none;
@@ -273,9 +359,7 @@
   .burger {
     display: flex;
   }
-}
 
-@media (max-width: 768px) {
   .footer__panel {
     grid-template-columns: 1fr;
     gap: 100px;

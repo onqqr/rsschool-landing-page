@@ -21,6 +21,7 @@
       })();
     </script>
     <script src="js/theme.js" defer></script>
+    <script src="js/burger.js" defer></script>
     <script src="js/nav.js" defer></script>
     <script src="js/menu.js" defer></script>
   </head>
@@ -85,16 +86,74 @@
               width="20"
               height="20">
           </a>
-          <button class="burger" type="button" aria-label="Open menu">
+          <button
+            class="burger"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            data-burger
+          >
             <img
+              class="burger__icon burger__icon--open"
               src="assets/icons/button-icon-burger.svg"
               alt=""
               width="44"
-              height="44">
+              height="44"
+              data-burger-open>
+            <img
+              class="burger__icon burger__icon--close"
+              src="assets/icons/button-icon-burger-close.svg"
+              alt=""
+              width="44"
+              height="44"
+              hidden
+              data-burger-close>
           </button>
         </div>
       </div>
     </header>
+
+    <nav
+      class="mobile-nav"
+      id="mobile-nav"
+      aria-label="Mobile"
+      aria-hidden="true"
+      data-mobile-nav
+    >
+      <ul class="mobile-nav__list">
+        <li>
+          <a class="mobile-nav__link" href="index.html#favorites"
+            >Favorite coffee</a
+          >
+        </li>
+        <li>
+          <a class="mobile-nav__link" href="index.html#about">About</a>
+        </li>
+        <li>
+          <a class="mobile-nav__link" href="index.html#mobile-app"
+            >Mobile app</a
+          >
+        </li>
+        <li>
+          <a class="mobile-nav__link" href="index.html#contacts">Contact us</a>
+        </li>
+        <li>
+          <a
+            class="mobile-nav__link mobile-nav__link--menu mobile-nav__link--current"
+            href="menu.html"
+          >
+            Menu
+            <img
+              class="mobile-nav__menu-icon"
+              src="assets/icons/coffee-cup.svg"
+              alt=""
+              width="40"
+              height="40">
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <main>
       <section class="menu" id="menu" data-menu aria-labelledby="menu-title">
