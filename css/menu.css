@@ -41,12 +41,15 @@
   border: 1px solid transparent;
   border-radius: 50%;
   background-color: #c1b6ad;
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji",
-    sans-serif;
-  font-size: 16px;
-  line-height: 1;
   overflow: hidden;
   transition: background-color var(--transition), border-color var(--transition);
+}
+
+.menu__tab-icon img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  display: block;
 }
 
 .menu__tab:hover,
