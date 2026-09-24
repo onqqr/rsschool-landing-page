@@ -264,7 +264,7 @@
   box-shadow: inset 0 -2px 0 currentColor;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .header__nav,
   .header__menu {
     display: none;
@@ -273,9 +273,7 @@
   .burger {
     display: flex;
   }
-}
 
-@media (max-width: 768px) {
   .footer__panel {
     grid-template-columns: 1fr;
     gap: 100px;
